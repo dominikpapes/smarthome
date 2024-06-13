@@ -1,0 +1,9 @@
+.idea
+.venv
+smarthome.code-workspace
+node_modules
+literature
+Test_data
+best_parameters.json
+kt_dir
+__pycache__

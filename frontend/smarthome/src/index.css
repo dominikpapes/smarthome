@@ -1,0 +1,65 @@
+* {
+    box-sizing: border-box;
+  }
+
+.login-form-container {
+    width: 25rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.rooms-list {
+    width: 30rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1rem;
+}
+
+.room-info {
+    border: lightgrey 1px solid;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.room-edit {
+    margin-bottom: 0.5rem;
+    padding: 1rem;
+    border: 1px solid black;
+    border-radius: 0.5rem; 
+}
+
+.new-room-btn {
+    text-align: center;
+}
+
+.confirm-modal {
+    max-width: 80%;
+}
+
+.devices-list {
+    font-size:1.2rem;
+}
+
+.breakable-badge {
+    max-width: 100%; /* Ensure the badge doesn't overflow the card width */
+    word-break: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+  }
+  
+.delete-device-btn {
+    width: 20%;
+}
+
+@media (max-width: 500px) {
+    .rooms-list {
+      width: 95%; /* Set the width to 95% of the screen */
+      padding: 0.5rem; /* Reduce the padding */
+    }
+
+    .login-form-container {
+        width: 95%;
+    }
+  }
+
