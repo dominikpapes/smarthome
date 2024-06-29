@@ -5,7 +5,7 @@ Kako pokrenuti poslužiteljsku aplikaciju (Win11/Win10):
 - pyhton -m venv .venv
 - .venv\Scripts\activate
 - cd smarthome
-- python -m pip install -r requirements.txt
+- pip install django djangorestframework tensorflow pandas keras-tuner --upgrade
 - python manage.py runserver
 - python manage.py migrate #u slučaju pojave greške vezane uz migraciju
 
@@ -14,7 +14,7 @@ Kako pokrenuti poslužiteljsku aplikaciju (Linux; bash):
 - pyhton3 -m venv .venv
 - source .venv/bin/activate
 - cd smarthome
-- python3 -m pip install -r requirements.txt
+- pip install django djangorestframework tensorflow pandas keras-tuner --upgrade
 - python3 manage.py runserver
 - python3 manage.py migrate #u slučaju pojave greške vezane uz migraciju
 
