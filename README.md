@@ -1,6 +1,8 @@
 # Završni rad na temu "Razvoj kognitivnih usluga u prostoru Interneta stvar"
 
-Kako pokrenuti poslužiteljsku aplikaciju (Win11/Win10):
+## Upute Win10/Win11
+
+Pokretanje poslužiteljske aplikacije
 - cd backend
 - pyhton -m venv .venv
 - .venv\Scripts\activate
@@ -9,7 +11,19 @@ Kako pokrenuti poslužiteljsku aplikaciju (Win11/Win10):
 - python manage.py runserver
 - python manage.py migrate #u slučaju pojave greške vezane uz migraciju
 
-Kako pokrenuti poslužiteljsku aplikaciju (Linux; bash):
+Pokretanje klijentske aplikacije (potrebno instalirati alat npm)
+- cd frontend\smarthome
+- npm i
+- npm run dev
+
+Pokretanje simulacije rada - sve sobe ažuriraju se s novim vremenima i temperaturama te se potom predvidaju stanja uređaja za to vrijeme i temperaturu
+- cd backend\smarthome
+- python auto.py -> pokretanje simulacijske skripte koja simulira promjene svakih 10 sekundi
+- python auto.py single -> pokretanje simulacijske skripte koja simulira jednu promjenu
+
+## Upute Linux
+
+Pokretanje poslužiteljske aplikacije
 - cd backend
 - pyhton3 -m venv .venv
 - source .venv/bin/activate
@@ -18,8 +32,8 @@ Kako pokrenuti poslužiteljsku aplikaciju (Linux; bash):
 - python3 manage.py runserver
 - python3 manage.py migrate #u slučaju pojave greške vezane uz migraciju
 
-Kako pokrenuti klijentsku aplikaciju (Win11/Win10; uz prethodno instaliran alat npm):
-- cd frontend\smarthome
+Pokretanje klijentske aplikacije (potrebno instalirati alat npm)
+- cd frontend/smarthome
 - npm i
 - npm run dev
 
