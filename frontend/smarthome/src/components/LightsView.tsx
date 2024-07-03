@@ -18,7 +18,7 @@ function LightsView(props: props) {
         <Badge bg={props.turnedOn ? "primary" : "secondary"}>
           <i className="fa-solid fa-bolt"></i>
           {"   "}
-          {props.intensity}%
+          {props.intensity}
         </Badge>
       </Stack>
     </>

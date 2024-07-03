@@ -13,10 +13,22 @@ async function register(data: UserRegister) {
       },
       body: JSON.stringify(data),
     });
-    const result = await response.text();
-    console.log("Success ", result);
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      if (errorData.username) {
+        console.error("Error: Username already exists.");
+        alert("Korisničko ime postoji.");
+        return;
+      }
+      throw new Error("Registration failed. Please try again.");
+    }
+
+    const result = await response.json();
+    console.log("Success", result);
   } catch (error) {
-    console.error("Error ", error);
+    console.error("Error", error);
+    alert("An error occurred. Please try again.");
   }
 }
 
@@ -39,6 +51,7 @@ function Register() {
   const [formData, setFormData] = useState(initialUserRegisterState);
   const [showPasswordAlert, setShowPasswordAlert] = useState("");
   const [showPasswordConfAlert, setShowPasswordConfAlert] = useState("");
+  const [showUsernameAlert, setShowUsernameAlert] = useState("")
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = event.target;
@@ -52,19 +65,27 @@ function Register() {
     event.preventDefault();
     setShowPasswordAlert("");
     setShowPasswordConfAlert("");
+    var err = false;
+    const alphanumericPattern = /^[a-zA-Z0-9]{20}$/;
+    if (alphanumericPattern.test(formData.username) && formData.username.length <= 20) {
+      setShowUsernameAlert("Korisničko ime mora biti alfanumerički znakovi duljine 20.")
+      err = true;
+    }
     if (formData.password != formData.password_confirmation) {
       setShowPasswordConfAlert("Lozinke nisu jednake.");
-      return;
+      err = true;
     }
-    if (validate_password(formData)) {
-      register(formData).then(() => {
-        navigate("/");
-      });
-    } else {
+    if (!validate_password(formData)) {
       setShowPasswordAlert(
         "Lozinka mora biti duga barem 8 znakova, sadržavati barem jedno veliko slovo, barem jedno malo slovo i barem jednu znamenku."
       );
     }
+
+    if (!err) {
+      register(formData).then(() => {
+        navigate("/");
+      });
+    } 
   }
 
   return (
@@ -110,6 +131,11 @@ function Register() {
               Odustani
             </Button>
           </div>
+          {showUsernameAlert && (
+            <Alert variant="danger" className="mt-3" dismissible>
+              {showUsernameAlert}
+            </Alert>
+          )}
           {showPasswordAlert && (
             <Alert variant="danger" className="mt-3" dismissible>
               {showPasswordAlert}

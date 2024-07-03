@@ -123,6 +123,7 @@ function Rooms() {
                   <i className="fa-solid fa-pen"></i>
                 </Button>
               </Stack>
+              <h6>{room.hour}:00</h6>
               <h6>{room.temperature}°C</h6>
             </Card.Header>
             <Card.Body>

@@ -28,12 +28,15 @@ def get_all_users(request):
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def register_user(request):
+    username = request.data.get('username', None)
+    if username and User.objects.filter(username=username).exists():
+        return JsonResponse({'username': 'This username is already taken.'}, status=400)
+    
     serializer = UserRegistrationSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()
         return JsonResponse(serializer.data, status=201)
     return JsonResponse(serializer.errors, status=400)
-
 
 @csrf_exempt
 @api_view(['POST'])

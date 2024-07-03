@@ -22,6 +22,7 @@ export interface Room {
   airconditioners: AirConditioner[];
   lights: Light[];
   owner: string;
+  hour: number;
 }
 
 export interface UserLogin {
